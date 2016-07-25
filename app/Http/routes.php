@@ -15,16 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-Route::group(['middleware' => ['web']],function(){
-	Route::get('/', function () {
-	    return view('welcome');
-	});
-
-	Route::post('/signup',[
-		'uses' => 'UserController@postSignUp',
-		'as' => 'signup'
-	]);
+Route::post('/signup',[
+	'uses' => 'UserController@postSignUp',
+	'as' => 'signup'
+]);
+//Route::group(['middleware' => ['web']],function(){
+	
 
 	Route::post('/signin',[
 		'uses' => 'UserController@postSignIn',
@@ -33,6 +33,22 @@ Route::group(['middleware' => ['web']],function(){
 
 	Route::get('/dashboard',[
 		'uses' => 'UserController@getDashboard',
-		'as' => 'dashboard'
+		'as' => 'dashboard',
+		'middleware'=>'auth'
 	]);
-});
+
+	Route::get('/testview',[
+		'uses' => 'TestController@index',
+		'as' =>'testview'
+	]);
+
+	Route::post('/testSave',[
+		'uses' => 'TestController@testSave',
+		'as' =>'testSave'
+	]);
+
+	Route::post('/createpost',[
+		'uses' =>'PostController@postCreatePost',
+		'as' => 'post.create'
+	]);
+//});
