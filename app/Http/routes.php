@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+	Route::get('/', function () {
+	    return view('welcome');
+	})->name('home');
 
-Route::post('/signup',[
-	'uses' => 'UserController@postSignUp',
-	'as' => 'signup'
-]);
+	Route::post('/signup',[
+		'uses' => 'UserController@postSignUp',
+		'as' => 'signup'
+	]);
 //Route::group(['middleware' => ['web']],function(){
 	
 
@@ -32,7 +32,7 @@ Route::post('/signup',[
 	]);
 
 	Route::get('/dashboard',[
-		'uses' => 'UserController@getDashboard',
+		'uses' => 'PostController@getDashboard',
 		'as' => 'dashboard',
 		'middleware'=>'auth'
 	]);
@@ -49,6 +49,13 @@ Route::post('/signup',[
 
 	Route::post('/createpost',[
 		'uses' =>'PostController@postCreatePost',
-		'as' => 'post.create'
+		'as' => 'post.create',
+		'middleware' => 'auth'
+	]);
+
+	Route::get('/delete-post/{post_id}', [
+		'uses' => 'PostController@getDeletePost',
+		'as' =>'post.delete',
+		'middleware' => 'auth'
 	]);
 //});
