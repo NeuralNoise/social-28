@@ -36,5 +36,11 @@
 			}
 			return redirect()->back();
 		}
+
+		//logout
+		public function getLogout(){
+			Auth::logout();
+			return redirect()->route('home');
+		}
 	}
 ?>

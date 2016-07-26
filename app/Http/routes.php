@@ -58,4 +58,14 @@ Route::get('/', function () {
 		'as' =>'post.delete',
 		'middleware' => 'auth'
 	]);
+
+	Route::get('/logout',[
+		'uses' => 'UserController@getLogout',
+		'as' =>'logout'
+
+	]);
+
+	Route::get('te',function(){
+		dd(Auth::user());
+	});
 //});
