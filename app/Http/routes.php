@@ -69,12 +69,12 @@ Route::get('/', function () {
 		dd(Auth::user());
 	});
 
-	Route::post('/edit',function(\Illuminate\Http\Request $request){
+	/*Route::post('/edit',function(\Illuminate\Http\Request $request){
 		return response()->json(['message'=>$request['postId']]);
-		/*
-			{
-				message:'$request['body']'
-			}
-		*/
-	})->name('edit');
+	})->name('edit');*/
+
+	Route::post('/edit',[
+		'uses' => 'PostController@postEditPost',
+		'as' =>'edit'
+	]);
 //});
