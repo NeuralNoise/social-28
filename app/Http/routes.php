@@ -68,4 +68,13 @@ Route::get('/', function () {
 	Route::get('te',function(){
 		dd(Auth::user());
 	});
+
+	Route::post('/edit',function(\Illuminate\Http\Request $request){
+		return response()->json(['message'=>$request['postId']]);
+		/*
+			{
+				message:'$request['body']'
+			}
+		*/
+	})->name('edit');
 //});
