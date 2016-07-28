@@ -77,4 +77,14 @@ Route::get('/', function () {
 		'uses' => 'PostController@postEditPost',
 		'as' =>'edit'
 	]);
+
+	Route::get('/account', [
+		'uses' => 'UserController@getAccount',
+		'as' =>'account'
+	]);
+
+	Route::get('/updateaccount', [
+		'uses' => 'UserController@postSaveAccount',
+		'as' =>'account.save'
+	]);
 //});
