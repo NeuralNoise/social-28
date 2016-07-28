@@ -14,7 +14,7 @@ $(document).ready(function(){
 	$('#modal-save').on('click',function(){
 		$.ajax({
 			method: 'POST',
-			url: url,
+			url: urlEdit,
 			data: {body:$('#post-body').val(),postId:postId,_token:token}
 		})
 		.done(function(msg){
@@ -24,5 +24,29 @@ $(document).ready(function(){
 		});
 	});
 	/*end update post*/
+
+	/*like dislike*/
+	$('.like').on('click',function(e){
+		e.preventDefault();
+		postId = e.target.parentNode.parentNode.dataset['postid'];
+		var isLike = e.target.previousElementSibling == null;
+		//console.log(isLike);
+		$.ajax({
+			method: 'POST',
+			url: urlLike,
+			data: {isLike:isLike, postId:postId, _token:token}
+		})
+		.done(function(){
+			//change the page
+			e.target.innerText= isLike ? e.target.innerText == 'Like' ? 'You like this post' : 'Like' : e.target.innerText == 'Dislike' ? 'You dont like this post': 'Dislike';
+			if(isLike){
+				e.target.nextElementSibling.innerText = 'Dislike';
+			}else{
+				e.target.previousElementSibling.innerText = 'Like';
+			}
+		});
+	});
+	
+	/*like dislike*/
 });
 

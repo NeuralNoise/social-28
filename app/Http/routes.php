@@ -80,7 +80,8 @@ Route::get('/', function () {
 
 	Route::get('/account', [
 		'uses' => 'UserController@getAccount',
-		'as' =>'account'
+		'as' =>'account',
+		'middleware' => 'auth'
 	]);
 
 	Route::post('/updateaccount', [
@@ -91,5 +92,10 @@ Route::get('/', function () {
 	Route::get('/userimage/{filename}',[
 		'uses' => 'UserController@getUserImage',
 		'as' =>'account.image'
+	]);
+
+	Route::post('/like',[
+		'uses' => 'PostController@postLikePost',
+		'as' =>'like'
 	]);
 //});
