@@ -46,6 +46,10 @@ Route::get('/', function () {
 		'uses' => 'TestController@testSave',
 		'as' =>'testSave'
 	]);
+	Route::get('/testall',[
+		'uses' => 'TestController@getTest',
+		'as' =>'testall'
+	]);
 
 	Route::post('/createpost',[
 		'uses' =>'PostController@postCreatePost',
