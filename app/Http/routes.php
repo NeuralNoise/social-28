@@ -19,12 +19,17 @@ Route::get('/', function () {
 	    return view('welcome');
 	})->name('home');
 
+	Route::get('/testApi', [
+	    'uses' => 'TestApiController@getTest',
+			'as' => 'testApi'
+	]);
+
 	Route::post('/signup',[
 		'uses' => 'UserController@postSignUp',
 		'as' => 'signup'
 	]);
 //Route::group(['middleware' => ['web']],function(){
-	
+
 
 	Route::post('/signin',[
 		'uses' => 'UserController@postSignIn',
