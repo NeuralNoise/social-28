@@ -28,6 +28,13 @@ Route::get('/', function () {
 		'uses' => 'UserController@postSignUp',
 		'as' => 'signup'
 	]);
+
+	//session(['locale' => 'bn']);
+
+	Route::get('/dmeolocal/{locale?}',[
+		'uses' => 'TestApiController@demoLocal',
+		'as' => 'dmeolocal'
+	]);
 //Route::group(['middleware' => ['web']],function(){
 
 
